@@ -1,0 +1,40 @@
+.pfp {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.pfp img {
+    height: 3rem;
+    width: 3rem;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.comment-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.author-text p {
+    margin: 0;
+}
+
+.author-intro {
+    color: grey;
+    font-weight: 600;
+}
+
+.seperator {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+}
+
+.smaller-text {
+    font-size: small;
+}
+
+#load-more-btn {
+    margin-top: 2rem;
+}

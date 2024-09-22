@@ -1,0 +1,6 @@
+p {
+    padding-bottom: 30px;
+    margin: 0 auto; /* Center horizontally */
+    max-width: 100%; /* Ensure it doesn't exceed the container width */
+    color: rgb(224, 91, 91);
+}
