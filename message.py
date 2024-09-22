@@ -1,5 +1,8 @@
 import mailtrap as mt
+import os
+from dotenv import load_dotenv
 
+load_dotenv()
 
 def send_text(receiver, message):
     mail = mt.Mail(
@@ -10,5 +13,5 @@ def send_text(receiver, message):
         category="Customer Interaction",
     )
 
-    client = mt.MailtrapClient(token="f83369dffe84dd74df7a807856f6a8f1")
+    client = mt.MailtrapClient(token=f"{os.getenv('EMAIL_TOKEN')}")
     client.send(mail)

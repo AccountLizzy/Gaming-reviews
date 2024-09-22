@@ -14,20 +14,24 @@ from flask_login import LoginManager, login_user, logout_user, login_required, c
 from sqlalchemy.exc import IntegrityError
 from functools import wraps
 from hashlib import md5
+import os
+from dotenv import load_dotenv
 
 
 app = Flask(__name__, static_folder='static')
 
 ALLOWED_TAGS = ['p', 'h2', 'strong', 'a', 'ul', 'li', 'strike', 's', 'em', 'i']
 
-# csrf protection
-app.config['SECRET_KEY'] = 'HellO!!'
-
 # initialize
 bootstrap = Bootstrap5(app)
 login_manager = LoginManager()
 login_manager.init_app(app)
 ckeditor = CKEditor(app)
+load_dotenv()  # Initialize dotenv
+
+
+# csrf protection
+app.config['SECRET_KEY'] = os.getenv('FLASK_KEY')
 
 def avatar(email):
     digest = md5(email.lower().encode('utf-8')).hexdigest()

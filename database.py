@@ -5,12 +5,17 @@ import requests
 import os
 from flask_login import UserMixin
 from typing import List
+import os
+from dotenv import load_dotenv
+
+# Initialize
+load_dotenv()
 
 # Ensure there is directory
 if not os.path.exists('instance'):
     os.makedirs('instance')
 
-engine = create_engine('sqlite:///instance/blogs.db')
+engine = create_engine(os.getenv('ENGINE_PATH'))
 session = Session(bind=engine)
 
 Base = declarative_base()
@@ -65,7 +70,7 @@ Base.metadata.create_all(bind=engine)
 
 # ------------- API --------------- #
 
-# response = requests.get(url='https://api.npoint.io/80b78fa396df0123eade').json()
+# response = requests.get(url=f'{os.getenv("NPOINT_PATH")}').json()
 # if response:
 #     for blog in response:
 #         new_blog = Blogs(
